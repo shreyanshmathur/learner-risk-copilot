@@ -1,5 +1,8 @@
 # Learner Risk Copilot
 
+> **GitHub:** https://github.com/shreyanshmathur/learner-risk-copilot  
+> **Deploy to Netlify:** [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/shreyanshmathur/learner-risk-copilot)
+
 A lightweight, polished web dashboard that helps Learner Success and Onboarding teams identify learners likely to request refunds within the first 7–14 days after enrollment, understand why they are at risk, and act on a recommended intervention.
 
 ---
@@ -77,6 +80,29 @@ This starts both:
 - **Frontend** at `http://localhost:3000`
 
 Open your browser at **http://localhost:3000**.
+
+---
+
+## Deploy to Netlify
+
+### One-click deploy
+Click the "Deploy to Netlify" button at the top of this README.
+
+### Manual deploy
+1. Log in to [app.netlify.com](https://app.netlify.com)
+2. Click **Add new site → Import an existing project**
+3. Connect your GitHub account and select `learner-risk-copilot`
+4. Netlify auto-detects the build settings from `netlify.toml`:
+   - **Build command:** `cd client && npm install && npm run build`
+   - **Publish directory:** `client/dist`
+   - **Functions directory:** `netlify/functions`
+5. Go to **Site settings → Environment variables** and add:
+   ```
+   GROQ_API_KEY = your_key_here
+   ```
+6. Click **Deploy site**
+
+> The Groq API key is read server-side by the Netlify Function — it is never exposed to the browser.
 
 ---
 
