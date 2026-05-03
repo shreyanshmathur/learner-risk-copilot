@@ -1,46 +1,59 @@
 export default function Header({ aiStatus, hasData, onExport }) {
   return (
-    <header className="bg-white border-b border-slate-200 sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            </div>
-            <div>
-              <h1 className="text-base font-semibold text-slate-900 leading-tight">Learner Risk Copilot</h1>
-              <p className="text-xs text-slate-500 leading-tight">Day 0–14 refund prevention queue</p>
-            </div>
-          </div>
+    <header className="bg-stone-900 border-b border-stone-800 sticky top-0 z-40">
+      <div className="max-w-screen-xl mx-auto px-6 h-12 flex items-center justify-between">
 
+        {/* Left — wordmark + breadcrumb */}
+        <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-1.5">
+            {/* Logotype mark */}
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="flex-shrink-0">
+              <rect x="0" y="10" width="4" height="8" rx="1" fill="#6366F1"/>
+              <rect x="7" y="5"  width="4" height="13" rx="1" fill="#818CF8"/>
+              <rect x="14" y="0" width="4" height="18" rx="1" fill="#A5B4FC"/>
+            </svg>
+            <span className="text-white font-semibold text-sm tracking-tight leading-none">
+              Learner Risk Copilot
+            </span>
+          </div>
+          <span className="text-stone-600 text-sm select-none">/</span>
+          <span className="text-stone-400 text-xs font-normal">Intervention Queue</span>
+        </div>
+
+        {/* Right — status + actions */}
+        <div className="flex items-center gap-4">
           {aiStatus === 'analyzing' && (
-            <div className="flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-3 py-1">
-              <span className="w-2 h-2 border border-blue-600 border-t-transparent rounded-full animate-spin" />
-              Generating AI insights…
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-500" />
+              </span>
+              <span className="text-stone-400 text-xs">Generating insights</span>
             </div>
           )}
           {aiStatus === 'done' && (
-            <div className="flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1">
-              <span className="text-emerald-500">✓</span> AI insights ready
+            <div className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              <span className="text-stone-400 text-xs">Insights ready</span>
             </div>
           )}
           {aiStatus === 'fallback' && (
-            <div className="flex items-center gap-1.5 text-xs text-slate-500 bg-slate-100 border border-slate-200 rounded-full px-3 py-1">
-              Rule-based mode
+            <div className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-stone-500" />
+              <span className="text-stone-500 text-xs">Rule-based mode</span>
             </div>
           )}
-        </div>
 
-        <div className="flex items-center gap-3">
-          <span className="text-xs text-slate-400 hidden sm:block">Scaler · Learner Success</span>
+          <div className="h-4 w-px bg-stone-700" />
+
+          <span className="text-stone-500 text-xs hidden sm:block">Scaler · Learner Success</span>
+
           {hasData && (
             <button
               onClick={onExport}
-              className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-lg hover:bg-slate-700 transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-stone-700 hover:bg-stone-600 text-white text-xs font-medium rounded transition-colors"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
               Export CSV

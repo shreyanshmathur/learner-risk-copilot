@@ -172,18 +172,19 @@ export default function App() {
   const filteredLearners = learners.filter(l => filterBand === 'all' || l.riskBand === filterBand);
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans">
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--bg)' }}>
       <Header aiStatus={aiStatus} hasData={hasData} onExport={exportToCSV} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+      <main className="max-w-screen-xl mx-auto px-5 sm:px-8 py-7 space-y-5">
+
         {/* Warnings */}
         {warnings.length > 0 && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3">
-            <svg className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="border border-amber-200 bg-amber-50 rounded px-4 py-3 flex gap-3">
+            <svg className="w-4 h-4 text-amber-500 flex-shrink-0 mt-px" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
             </svg>
             <div className="space-y-0.5">
-              {warnings.map((w, i) => <p key={i} className="text-sm text-amber-800">{w}</p>)}
+              {warnings.map((w, i) => <p key={i} className="text-xs text-amber-800">{w}</p>)}
             </div>
           </div>
         )}
@@ -196,62 +197,76 @@ export default function App() {
           />
         ) : (
           <>
-            {/* Reset / upload new */}
+            {/* Breadcrumb / context bar */}
             <div className="flex items-center justify-between">
-              <p className="text-sm text-slate-500">{learners.length} learners loaded</p>
+              <div className="flex items-center gap-2 text-xs text-stone-400">
+                <span className="font-mono">{learners.length} learners</span>
+                <span>·</span>
+                <span>Today's queue</span>
+              </div>
               <button
                 onClick={handleReset}
-                className="text-xs text-slate-500 hover:text-slate-800 underline underline-offset-2 transition-colors"
+                className="text-xs text-stone-400 hover:text-stone-700 transition-colors underline underline-offset-2"
               >
                 Upload new file
               </button>
             </div>
 
-            {/* KPI Cards */}
+            {/* KPI strip */}
             <KPICards learners={learners} />
 
-            {/* Chart row */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Chart + Scoring model */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
               <div className="lg:col-span-1">
                 <RiskChart learners={learners} />
               </div>
-              <div className="lg:col-span-2 bg-white border border-slate-200 rounded-xl p-6">
-                <h3 className="text-sm font-semibold text-slate-800 mb-1">How risk scoring works</h3>
-                <p className="text-xs text-slate-500 mb-4 leading-relaxed">Each learner is scored across 6 activation signals and notes analysis. High Risk (≥6) requires outreach within 24h.</p>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+
+              {/* Scoring reference */}
+              <div className="lg:col-span-2 bg-white border border-stone-200 rounded-md p-5">
+                <div className="mb-4">
+                  <h3 className="text-sm font-semibold text-stone-800">Scoring model</h3>
+                  <p className="text-xs text-stone-400 mt-0.5">
+                    Each learner is scored across activation signals and note sentiment.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-x-8">
                   {[
                     ['Dashboard Walkthrough not done', '+2'],
-                    ['Week 0 sessions = 0', '+3'],
-                    ['Week 0 sessions = 1', '+2'],
-                    ['Attendance < 25%', '+3'],
-                    ['Mentor session not booked', '+1'],
-                    ['Zero click rate', '+1'],
-                    ['Finance / EMI mention in notes', '+2'],
-                    ['Schedule / workload mention', '+2'],
-                    ['Personal / medical mention', '+2'],
-                    ['Expectation mismatch mention', '+2'],
+                    ['Week 0 sessions = 0',            '+3'],
+                    ['Week 0 sessions = 1',            '+2'],
+                    ['Attendance below 25%',           '+3'],
+                    ['Mentor session not booked',      '+1'],
+                    ['Zero communication click rate',  '+1'],
+                    ['Finance / EMI note',             '+2'],
+                    ['Schedule / workload note',       '+2'],
+                    ['Personal / medical note',        '+2'],
+                    ['Expectation mismatch note',      '+2'],
                   ].map(([label, pts]) => (
-                    <div key={label} className="flex justify-between items-center py-1.5 border-b border-slate-50 last:border-0">
-                      <span className="text-xs text-slate-600">{label}</span>
-                      <span className="text-xs font-semibold text-slate-800 ml-2">{pts}</span>
+                    <div key={label} className="flex justify-between items-center py-2 border-b border-stone-50 last:border-0 gap-2">
+                      <span className="text-xs text-stone-600">{label}</span>
+                      <span className="font-mono text-xs font-semibold text-stone-800 flex-shrink-0">{pts}</span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 flex gap-3 flex-wrap">
+
+                <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-4 flex-wrap">
                   {[
-                    { range: '0–2', label: 'Low Risk', cls: 'bg-emerald-100 text-emerald-700 border-emerald-200' },
-                    { range: '3–5', label: 'Medium Risk', cls: 'bg-amber-100 text-amber-700 border-amber-200' },
-                    { range: '6+', label: 'High Risk', cls: 'bg-red-100 text-red-700 border-red-200' },
-                  ].map(({ range, label, cls }) => (
-                    <span key={label} className={`text-xs px-2.5 py-1 rounded-full font-medium border ${cls}`}>
-                      {range} pts → {label}
-                    </span>
+                    { range: '0–2', label: 'Low',    dot: 'bg-emerald-600', text: 'text-emerald-700' },
+                    { range: '3–5', label: 'Medium', dot: 'bg-amber-500',   text: 'text-amber-700'   },
+                    { range: '6+',  label: 'High',   dot: 'bg-red-600',     text: 'text-red-700'     },
+                  ].map(({ range, label, dot, text }) => (
+                    <div key={label} className="flex items-center gap-2">
+                      <span className={`w-1.5 h-1.5 rounded-full ${dot}`} />
+                      <span className={`font-mono text-xs font-medium ${text}`}>{range} pts</span>
+                      <span className="text-xs text-stone-400">→ {label} Risk</span>
+                    </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Priority Queue */}
+            {/* Priority queue table */}
             <PriorityQueue
               learners={filteredLearners}
               allLearners={learners}

@@ -3,14 +3,56 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg: #F2F1ED;
+    --surface: #FFFFFF;
+    --border: #E3E1D9;
+    --border-strong: #C9C7BF;
+    --text: #1C1917;
+    --text-muted: #78716C;
+    --text-faint: #A8A29E;
+    --risk-high: #B91C1C;
+    --risk-high-bg: #FFF1F1;
+    --risk-high-border: #FECACA;
+    --risk-med: #92400E;
+    --risk-med-bg: #FFFBEB;
+    --risk-med-border: #FDE68A;
+    --risk-low: #14532D;
+    --risk-low-bg: #F0FDF4;
+    --risk-low-border: #BBF7D0;
+    --accent: #1C4ED8;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Outfit', system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer utilities {
-  .scrollbar-thin::-webkit-scrollbar { width: 4px; }
-  .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
-  .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+  .font-data {
+    font-family: 'DM Mono', ui-monospace, monospace;
+  }
+
+  /* Thin scrollbar for the detail drawer */
+  .scrollbar-thin::-webkit-scrollbar { width: 3px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: #D6D3D1; border-radius: 2px; }
+  .scrollbar-thin:hover::-webkit-scrollbar-thumb { background: #A8A29E; }
+
+  /* Risk row accent borders */
+  .row-high  { border-left: 2px solid var(--risk-high); }
+  .row-med   { border-left: 2px solid #D97706; }
+  .row-low   { border-left: 2px solid #16A34A; }
+
+  /* Subtle table row hover */
+  .table-row-hover:hover { background-color: #F9F8F6; }
+  .table-row-active      { background-color: #EEF2FF !important; }
 }

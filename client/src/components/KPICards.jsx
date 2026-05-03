@@ -1,50 +1,57 @@
-function Card({ title, value, sub, accent }) {
+function Stat({ label, value, note, highlight }) {
   return (
-    <div className={`bg-white rounded-xl border p-5 ${accent || 'border-slate-200'}`}>
-      <p className="text-xs font-medium text-slate-500 uppercase tracking-wide mb-2">{title}</p>
-      <p className={`text-3xl font-bold leading-none mb-1 ${accent ? 'text-red-600' : 'text-slate-900'}`}>{value}</p>
-      {sub && <p className="text-xs text-slate-400 mt-1">{sub}</p>}
+    <div className="flex-1 px-6 py-5 min-w-0">
+      <div className={`font-mono text-2xl font-medium leading-none tracking-tight ${highlight ? 'text-red-700' : 'text-stone-900'}`}>
+        {value}
+      </div>
+      <div className="text-xs text-stone-500 mt-1.5 font-normal leading-snug">{label}</div>
+      {note && (
+        <div className={`text-[11px] mt-1 font-mono ${highlight ? 'text-red-500' : 'text-stone-400'}`}>
+          {note}
+        </div>
+      )}
     </div>
   );
 }
 
 export default function KPICards({ learners }) {
-  const total = learners.length;
-  const high = learners.filter(l => l.riskBand === 'High Risk').length;
+  const total  = learners.length;
+  const high   = learners.filter(l => l.riskBand === 'High Risk').length;
   const medium = learners.filter(l => l.riskBand === 'Medium Risk').length;
-  const low = learners.filter(l => l.riskBand === 'Low Risk').length;
-  const refundRiskPct = total ? Math.round(((high * 1.0 + medium * 0.4) / total) * 100) : 0;
-  const outreach24h = high;
+  const low    = learners.filter(l => l.riskBand === 'Low Risk').length;
+  const riskPct = total ? Math.round(((high * 1.0 + medium * 0.4) / total) * 100) : 0;
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-      <Card
-        title="Total Learners"
-        value={total}
-        sub="Enrolled cohort"
-      />
-      <Card
-        title="High Risk"
-        value={high}
-        sub="Needs 24h outreach"
-        accent="border-red-200 bg-red-50"
-      />
-      <Card
-        title="Medium Risk"
-        value={medium}
-        sub="Needs 48h outreach"
-      />
-      <Card
-        title="Est. Refund Risk"
-        value={`${refundRiskPct}%`}
-        sub={`${low} learners on track`}
-      />
-      <Card
-        title="24h Outreach"
-        value={outreach24h}
-        sub="High-priority calls today"
-        accent={outreach24h > 0 ? 'border-red-200 bg-red-50' : 'border-slate-200'}
-      />
+    <div className="bg-white border border-stone-200 rounded-md overflow-hidden">
+      <div className="flex divide-x divide-stone-200">
+        <Stat
+          label="Total learners"
+          value={total}
+          note="enrolled cohort"
+        />
+        <Stat
+          label="High risk"
+          value={high}
+          note="24h SLA"
+          highlight={high > 0}
+        />
+        <Stat
+          label="Medium risk"
+          value={medium}
+          note="48h SLA"
+        />
+        <Stat
+          label="Low risk"
+          value={low}
+          note="on track"
+        />
+        <Stat
+          label="Est. refund exposure"
+          value={`${riskPct}%`}
+          note={`${high} urgent · ${medium} watch`}
+          highlight={riskPct > 30}
+        />
+      </div>
     </div>
   );
 }

@@ -4,7 +4,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Outfit', 'system-ui', 'sans-serif'],
+        mono: ['DM Mono', 'ui-monospace', 'monospace'],
+      },
+      colors: {
+        stone: {
+          925: '#141210',
+        },
       },
     },
   },
