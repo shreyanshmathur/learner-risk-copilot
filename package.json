@@ -1,0 +1,17 @@
+{
+  "name": "learner-risk-copilot",
+  "version": "1.0.0",
+  "description": "Refund prevention dashboard for learner success teams",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "dependencies": {
+    "groq-sdk": "^0.3.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

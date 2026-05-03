@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "learner-risk-copilot",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:/Users/shrey/Downloads/ScalerPOC/server/server.js"],
+      "port": 3000
+    }
+  ]
+}
