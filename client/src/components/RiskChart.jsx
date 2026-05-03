@@ -72,7 +72,7 @@ export default function RiskChart({ learners }) {
             <div className="flex items-center gap-2.5">
               <span className="font-mono text-xs font-medium text-stone-900">{count}</span>
               <span className="font-mono text-xs text-stone-400 w-8 text-right">
-                {total ? `${Math.round((count / total) * 100)}%` : '—'}
+                {total ? `${Math.round((count / total) * 100)}%` : '-'}
               </span>
             </div>
           </div>

@@ -3,7 +3,7 @@ export default function Header({ aiStatus, hasData, onExport }) {
     <header className="bg-stone-900 border-b border-stone-800 sticky top-0 z-40">
       <div className="max-w-screen-xl mx-auto px-6 h-12 flex items-center justify-between">
 
-        {/* Left — wordmark + breadcrumb */}
+        {/* Left - wordmark + breadcrumb */}
         <div className="flex items-center gap-2.5">
           <div className="flex items-center gap-1.5">
             {/* Logotype mark */}
@@ -20,7 +20,7 @@ export default function Header({ aiStatus, hasData, onExport }) {
           <span className="text-stone-400 text-xs font-normal">Intervention Queue</span>
         </div>
 
-        {/* Right — status + actions */}
+        {/* Right - status + actions */}
         <div className="flex items-center gap-4">
           {aiStatus === 'analyzing' && (
             <div className="flex items-center gap-2">

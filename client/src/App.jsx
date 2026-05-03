@@ -37,9 +37,9 @@ export default function App() {
     const { mapping } = mapColumns(headers);
     const newWarnings = [];
 
-    if (!mapping.learnerId) newWarnings.push('No Learner ID column detected — auto-generating IDs.');
-    if (!mapping.learnerName) newWarnings.push('No Learner Name column detected — using "Unknown Learner".');
-    if (!mapping.week0SessionsAttended) newWarnings.push('Week 0 Sessions column not found — scoring that signal as 0.');
+    if (!mapping.learnerId) newWarnings.push('No Learner ID column detected - auto-generating IDs.');
+    if (!mapping.learnerName) newWarnings.push('No Learner Name column detected - using "Unknown Learner".');
+    if (!mapping.week0SessionsAttended) newWarnings.push('Week 0 Sessions column not found - scoring that signal as 0.');
 
     // Map + score
     const scoredLearners = rawData
@@ -252,8 +252,8 @@ export default function App() {
 
                 <div className="mt-4 pt-4 border-t border-stone-100 flex items-center gap-4 flex-wrap">
                   {[
-                    { range: '0–2', label: 'Low',    dot: 'bg-emerald-600', text: 'text-emerald-700' },
-                    { range: '3–5', label: 'Medium', dot: 'bg-amber-500',   text: 'text-amber-700'   },
+                    { range: '0-2', label: 'Low',    dot: 'bg-emerald-600', text: 'text-emerald-700' },
+                    { range: '3-5', label: 'Medium', dot: 'bg-amber-500',   text: 'text-amber-700'   },
                     { range: '6+',  label: 'High',   dot: 'bg-red-600',     text: 'text-red-700'     },
                   ].map(({ range, label, dot, text }) => (
                     <div key={label} className="flex items-center gap-2">

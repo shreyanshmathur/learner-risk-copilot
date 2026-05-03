@@ -39,7 +39,7 @@ export default function FileUpload({ onFileUpload, onSampleData, isLoading }) {
             Surface refund risk<br />before it happens.
           </h2>
           <p className="text-stone-400 text-sm leading-relaxed">
-            Upload your learner activation data and get a prioritised intervention queue — scored, ranked, and AI-annotated — in under 60 seconds.
+            Upload your learner activation data and get a prioritised intervention queue, scored, ranked, and AI-annotated, in under 60 seconds.
           </p>
 
           <div className="mt-8 space-y-2">

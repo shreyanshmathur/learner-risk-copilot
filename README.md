@@ -3,7 +3,7 @@
 > **GitHub:** https://github.com/shreyanshmathur/learner-risk-copilot  
 > **Deploy to Netlify:** [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/shreyanshmathur/learner-risk-copilot)
 
-A lightweight, polished web dashboard that helps Learner Success and Onboarding teams identify learners likely to request refunds within the first 7–14 days after enrollment, understand why they are at risk, and act on a recommended intervention.
+A lightweight, polished web dashboard that helps Learner Success and Onboarding teams identify learners likely to request refunds within the first 7-14 days after enrollment, understand why they are at risk, and act on a recommended intervention.
 
 ---
 
@@ -42,8 +42,8 @@ This POC converts the refund analysis into an operational workflow. Instead of w
 | Notes mention: expectation mismatch, sales promise, course fit | +2 |
 
 **Risk bands:**
-- 0–2 pts → Low Risk
-- 3–5 pts → Medium Risk
+- 0-2 pts → Low Risk
+- 3-5 pts → Medium Risk
 - 6+ pts → High Risk
 
 ---
@@ -67,7 +67,7 @@ cp .env.example .env
 
 The `.env` file is already pre-configured if you received this project with a key.
 
-> **Note:** The app works without a Groq key — it falls back to rule-based insights automatically.
+> **Note:** The app works without a Groq key - it falls back to rule-based insights automatically.
 
 ### 3. Run the app
 
@@ -102,7 +102,7 @@ Click the "Deploy to Netlify" button at the top of this README.
    ```
 6. Click **Deploy site**
 
-> The Groq API key is read server-side by the Netlify Function — it is never exposed to the browser.
+> The Groq API key is read server-side by the Netlify Function - it is never exposed to the browser.
 
 ---
 

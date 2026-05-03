@@ -84,7 +84,7 @@ const sampleData = [
     'Communication Open Rate': '25',
     'Communication Click Rate': '0',
     'Refund Comments': 'Loan was not approved. Cannot afford the full fee.',
-    'Support Notes': 'Finance issue — loan rejected by bank. Looking for alternative.',
+    'Support Notes': 'Finance issue - loan rejected by bank. Looking for alternative.',
     'Counselor Notes': 'Serious financial constraint. Discuss payment plan or deferral.',
     'Finance Status': 'Pending',
     'Preferred Batch Slot': 'Morning',

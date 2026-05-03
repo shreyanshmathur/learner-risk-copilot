@@ -91,7 +91,7 @@ export default function PriorityQueue({
         </div>
         <input
           type="text"
-          placeholder="Search name or ID…"
+          placeholder="Search name or ID..."
           value={search}
           onChange={e => setSearch(e.target.value)}
           className="px-3 py-1.5 text-sm border border-stone-200 rounded bg-stone-50 placeholder-stone-300 focus:outline-none focus:ring-1 focus:ring-indigo-300 focus:border-indigo-300 w-52 transition"
@@ -209,7 +209,7 @@ export default function PriorityQueue({
                     {/* Likely reason */}
                     <td className="px-4 py-3">
                       <span className="text-xs text-stone-500 leading-relaxed">
-                        {learner.likelyRefundReason || '—'}
+                        {learner.likelyRefundReason || '-'}
                       </span>
                     </td>
 

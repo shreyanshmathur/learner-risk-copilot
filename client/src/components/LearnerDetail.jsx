@@ -39,7 +39,7 @@ export default function LearnerDetail({ learner, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
-      {/* Dimmed overlay — no blur, keeps it professional */}
+      {/* Dimmed overlay - no blur */}
       <div
         className="absolute inset-0 bg-stone-900/40"
         onClick={onClose}
@@ -118,13 +118,13 @@ export default function LearnerDetail({ learner, onClose }) {
               />
               <Row
                 label="Week 0 sessions"
-                value={learner.week0SessionsAttended ?? '—'}
+                value={learner.week0SessionsAttended ?? '-'}
                 good={learner.week0SessionsAttended >= 2}
                 mono
               />
               <Row
                 label="Overall attendance"
-                value={att != null ? `${att}%` : '—'}
+                value={att != null ? `${att}%` : '-'}
                 good={att != null && att >= 25}
                 mono
               />
@@ -135,13 +135,13 @@ export default function LearnerDetail({ learner, onClose }) {
               />
               <Row
                 label="Comm. click rate"
-                value={cr != null ? `${cr}%` : '—'}
+                value={cr != null ? `${cr}%` : '-'}
                 good={cr != null && cr > 0}
                 mono
               />
               <Row
                 label="Batch alignment"
-                value={`${learner.preferredBatchSlot || '—'} → ${learner.assignedBatchSlot || '—'}`}
+                value={`${learner.preferredBatchSlot || '-'} → ${learner.assignedBatchSlot || '-'}`}
                 good={learner.preferredBatchSlot === learner.assignedBatchSlot}
               />
             </div>
@@ -169,14 +169,14 @@ export default function LearnerDetail({ learner, onClose }) {
               <div className="flex items-center gap-2">
                 <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${band.dot}`} />
                 <span className="text-sm font-medium text-stone-800">
-                  {learner.likelyRefundReason || '—'}
+                  {learner.likelyRefundReason || '-'}
                 </span>
               </div>
             </div>
             <div>
               <SectionLabel>Recommended action</SectionLabel>
               <p className="text-sm text-stone-700 leading-relaxed">
-                {learner.recommendedIntervention || '—'}
+                {learner.recommendedIntervention || '-'}
               </p>
             </div>
           </div>
@@ -195,7 +195,7 @@ export default function LearnerDetail({ learner, onClose }) {
                 </span>
               </div>
               <p className="text-sm text-stone-700 leading-relaxed italic">
-                "{learner.counselorScript || '—'}"
+                "{learner.counselorScript || '-'}"
               </p>
             </div>
           </div>
